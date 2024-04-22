@@ -1,14 +1,27 @@
-const async = require('async');
-
-function countOccurrencesAsync(array, itemToCount, callback) {
-    return new Promise((resolve, reject) => {
-        try {
-            const occurrences = array.filter(item => item === itemToCount).length;
-            callback(null, occurrences);
-            resolve(occurrences);
-        } catch (error) {
-            callback(new Error("Error counting occurrences"));
-            reject(error);
-        }
-    });
+async function countOccurrencesAsync(array, itemToCount) {
+    try {
+        const result = await new Promise((resolve, reject) => {
+            count(array, itemToCount, (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result);
+                }
+            });
+        });
+        return result;
+    } catch (error) {
+        throw new Error("Error counting occurrences");
+    }
 }
+
+function count(array, itemToCount, callback) {
+    try {
+        const occurrences = array.filter(item => item === itemToCount).length;
+        callback(null, occurrences);
+    } catch (error) {
+        callback(new Error("Error counting occurrences"));
+    }
+}
+
+
