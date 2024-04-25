@@ -1,27 +1,13 @@
-async function countOccurrencesAsync(array, itemToCount) {
-    try {
-        const result = await new Promise((resolve, reject) => {
-            count(array, itemToCount, (error, result) => {
-                if (error) {
-                    reject(error);
-                } else {
-                    resolve(result);
-                }
-            });
-        });
-        return result;
-    } catch (error) {
-        throw new Error("Error counting occurrences");
-    }
+function countOccurrencesAsync(array, key) 
+{
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      if (array.length < 1) {
+        resolve(0);
+      } else {
+        const count = array.filter((i) => i === key).length;
+        resolve(count);
+      }
+    }, 0);
+  });
 }
-
-function count(array, itemToCount, callback) {
-    try {
-        const occurrences = array.filter(item => item === itemToCount).length;
-        callback(null, occurrences);
-    } catch (error) {
-        callback(new Error("Error counting occurrences"));
-    }
-}
-
-
