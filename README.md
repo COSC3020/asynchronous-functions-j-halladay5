@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/26dp6wek)
 # Asynchronicity
 
 Implement a function that takes an array and a key to search for and counts the
@@ -20,3 +21,12 @@ this.
 
 What is the time complexity of your implementation (worst-case $\Theta$)? Add
 your answer, including your reasoning, to this markdown file.
+
+The time complexity of this implementation is $\Theta(n)$ where n is the length of the array, because we must look at each index of the array to determine which indexes are equal to the value we are searching for.
+The filter function will create a new array that is made up only of those indexes, and the length of that array is the number of occurances of that value. This time complexity is for all cases.
+
+Sources: 
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises - learning about promises
+https://advancedweb.hu/how-to-use-async-functions-with-array-filter-in-javascript/#conclusion - filter uses and examples
+https://caolan.github.io/async/v3/ - async functions
+
